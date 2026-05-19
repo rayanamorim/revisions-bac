@@ -7,7 +7,6 @@
     <style>
         :root {
             --primary: #4f46e5;
-            --primary-hover: #4338ca;
             --maths: #0ea5e9;
             --francais: #ec4899;
             --bg: #f8fafc;
@@ -53,20 +52,17 @@
         
         /* Emploi du temps */
         .schedule-day {
-            display: flex;
-            align-items: center;
+            display: block;
             padding: 15px 0;
             border-bottom: 1px solid #f1f5f9;
         }
         .schedule-day:last-child { border-bottom: none; }
         .day-name {
             font-weight: bold;
+            display: inline-block;
             width: 120px;
             color: var(--primary);
             font-size: 1.1rem;
-        }
-        .day-details {
-            flex-grow: 1;
         }
         .time-tag {
             background: #e0e7ff;
@@ -77,44 +73,30 @@
             font-size: 0.9rem;
             margin-right: 10px;
         }
-
-        /* Zones de dépôt */
-        .drop-zone {
-            border: 2px dashed #cbd5e1;
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            background: #f8fafc;
-            cursor: pointer;
-            transition: all 0.2s;
-            margin-bottom: 15px;
-        }
-        .drop-zone:hover {
-            border-color: var(--primary);
-            background: #f5f3ff;
-        }
-        .drop-zone p { margin: 0; color: #64748b; }
-        .drop-zone input[type="file"] { display: none; }
         
         .maths-title { color: var(--maths); }
         .francais-title { color: var(--francais); }
 
-        /* Listes de fichiers */
-        .file-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        /* Fenêtre Google Drive */
+        .drive-embed {
+            width: 100%;
+            height: 350px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            margin-top: 15px;
         }
-        .file-item {
-            display: flex;
-            align-items: center;
-            background: #f1f5f9;
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin-top: 8px;
-            font-size: 0.95rem;
+        .btn-drive {
+            display: inline-block;
+            margin-top: 10px;
+            background: #cbd5e1;
+            color: #334155;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: bold;
         }
-        .file-icon { margin-right: 10px; font-size: 1.2rem; }
+        .btn-drive:hover { background: #cbd5e1e1; }
     </style>
 </head>
 <body>
@@ -129,65 +111,36 @@
             <h2>📅 Mon Emploi du Temps Hebdomadaire</h2>
             
             <div class="schedule-day">
-                <div class="day-name">Mercredi</div>
-                <div class="day-details">
-                    <span class="time-tag">Après-midi</span> Devoirs + Analyse linéaire
-                </div>
+                <span class="day-name">Mercredi</span>
+                <span class="time-tag">Après-midi</span> Devoirs + Analyse linéaire
             </div>
             
             <div class="schedule-day">
-                <div class="day-name">Samedi</div>
-                <div class="day-details">
-                    <span class="time-tag">10h - 12h</span> Bac de maths
-                </div>
+                <span class="day-name">Samedi</span>
+                <span class="time-tag">10h - 12h</span> Bac de maths
             </div>
             
             <div class="schedule-day">
-                <div class="day-name">Dimanche</div>
-                <div class="day-details">
-                    <span class="time-tag">15h - 17h</span> Analyses linéaires + Oral du bac
-                </div>
+                <span class="day-name">Dimanche</span>
+                <span class="time-tag">15h - 17h</span> Analyses linéaires + Oral du bac
             </div>
         </div>
 
         <div class="card">
-            <h2 class="maths-title">📐 Révisions de chaque chapitre de Maths</h2>
-            <div class="drop-zone" onclick="document.getElementById('maths-input').click()">
-                <p>📂 Cliquez ici pour ajouter vos fiches ou exercices de Maths (PDF)</p>
-                <input type="file" id="maths-input" accept=".pdf" multiple onchange="handleFiles(this, 'maths-files')">
-            </div>
-            <ul id="maths-files" class="file-list">
-                </ul>
+            <h2 class="maths-title">📐 Mes Fiches de Maths</h2>
+            <p style="font-size: 0.95rem; color: #64748b; margin: 0;">Les fichiers ci-dessous sont synchronisés en direct :</p>
+            
+            <iframe src="https://drive.google.com/embeddedfolderview?id=1gqv6SZgRu6RyxLRnd5A8r5fJk7HKBVNe?usp=sharing#list" class="drive-embed" allow="autoplay"></iframe>
         </div>
 
         <div class="card">
-            <h2 class="francais-title">📖 Analyses Linéaires (Français)</h2>
-            <div class="drop-zone" onclick="document.getElementById('francais-input').click()">
-                <p>📂 Cliquez ici pour ajouter vos analyses linéaires (PDF)</p>
-                <input type="file" id="francais-input" accept=".pdf" multiple onchange="handleFiles(this, 'francais-files')">
-            </div>
-            <ul id="francais-files" class="file-list">
-                </ul>
+            <h2 class="francais-title">📖 Mes Analyses Linéaires (Français)</h2>
+            <p style="font-size: 0.95rem; color: #64748b; margin: 0;">Les fichiers ci-dessous sont synchronisés en direct :</p>
+            
+            <iframe src="https://drive.google.com/embeddedfolderview?id=1ZfyOv26-eHEQgWu2orMStTq0jkdxgjEQ?usp=sharing#list" class="drive-embed" allow="autoplay"></iframe>
         </div>
 
     </div>
 
-    <script>
-        function handleFiles(input, listId) {
-            const fileList = document.getElementById(listId);
-            const files = input.files;
-            
-            for (let i = 0; i < files.length; i++) {
-                const file = files[i];
-                
-                // Créer un élément visuel pour le fichier déposé
-                const li = document.createElement('li');
-                li.className = 'file-item';
-                li.innerHTML = `<span class="file-icon">📄</span> <strong>${file.name}</strong> &nbsp;(Prêt)`;
-                
-                fileList.appendChild(li);
-            }
-        }
-    </script>
 </body>
 </html>
