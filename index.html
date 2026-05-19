@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suivi Révisions Bac - Maths & Français</title>
+    <title>Espace Révisions Bac</title>
     <style>
         :root {
             --primary: #4f46e5;
@@ -73,9 +73,19 @@
             font-size: 0.9rem;
             margin-right: 10px;
         }
-        
-        .maths-title { color: var(--maths); }
-        .francais-title { color: var(--francais); }
+
+        .btn-link {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        .btn-link:hover { background: #4338ca; }
 
         /* Fenêtre Google Drive */
         .drive-embed {
@@ -83,32 +93,19 @@
             height: 350px;
             border: 2px solid #e2e8f0;
             border-radius: 12px;
-            margin-top: 15px;
         }
-        .btn-drive {
-            display: inline-block;
-            margin-top: 10px;
-            background: #cbd5e1;
-            color: #334155;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-        .btn-drive:hover { background: #cbd5e1e1; }
     </style>
 </head>
 <body>
 
     <div class="container">
         <header>
-            <h1>🎓 Mon Espace Révisions Bac</h1>
-            <p>Suivi exclusif des Maths et du Français pour Papa</p>
+            <h1>🎓 Espace Révisions Bac 2026</h1>
+            <p>Suivi des objectifs en Mathématiques et Français</p>
         </header>
 
         <div class="card">
-            <h2>📅 Mon Emploi du Temps Hebdomadaire</h2>
+            <h2>📅 Emploi du Temps Hebdomadaire</h2>
             
             <div class="schedule-day">
                 <span class="day-name">Mercredi</span>
@@ -127,17 +124,19 @@
         </div>
 
         <div class="card">
-            <h2 class="maths-title">📐 Mes Fiches de Maths</h2>
-            <p style="font-size: 0.95rem; color: #64748b; margin: 0;">Les fichiers ci-dessous sont synchronisés en direct :</p>
-            
-            <iframe src="https://drive.google.com/embeddedfolderview?id=1gqv6SZgRu6RyxLRnd5A8r5fJk7HKBVNe?usp=sharing#list" class="drive-embed" allow="autoplay"></iframe>
+            <h2 style="color: var(--maths);">📐 Fiches de Mathématiques</h2>
+            <a href="https://drive.google.com/drive/folders/1gqv6SZgRu6RyxLRnd5A8r5fJk7HKBVNe?usp=sharing" target="_blank" class="btn-link">
+                🚀 Ouvrir le dossier Maths en grand
+            </a>
+            <iframe src="https://drive.google.com/embeddedfolderview?id=1gqv6SZgRu6RyxLRnd5A8r5fJk7HKBVNe#list" class="drive-embed" allow="autoplay"></iframe>
         </div>
 
         <div class="card">
-            <h2 class="francais-title">📖 Mes Analyses Linéaires (Français)</h2>
-            <p style="font-size: 0.95rem; color: #64748b; margin: 0;">Les fichiers ci-dessous sont synchronisés en direct :</p>
-            
-            <iframe src="https://drive.google.com/embeddedfolderview?id=1ZfyOv26-eHEQgWu2orMStTq0jkdxgjEQ?usp=sharing#list" class="drive-embed" allow="autoplay"></iframe>
+            <h2 style="color: var(--francais);">📖 Analyses de Français</h2>
+            <a href="https://drive.google.com/drive/folders/1ZfyOv26-eHEQgWu2orMStTq0jkdxgjEQ?usp=sharing" target="_blank" class="btn-link">
+                🚀 Ouvrir le dossier Français en grand
+            </a>
+            <iframe src="https://drive.google.com/embeddedfolderview?id=1ZfyOv26-eHEQgWu2orMStTq0jkdxgjEQ#list" class="drive-embed" allow="autoplay"></iframe>
         </div>
 
     </div>
